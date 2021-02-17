@@ -7,10 +7,10 @@
 //           xIsNext: false,
 //           history: history
 //         }
-      });
-    default:
-return state;
-  };
+//       });
+//     default:
+// return state;
+//   };
 
 
 //reducer is doing what setState is doing in our component
