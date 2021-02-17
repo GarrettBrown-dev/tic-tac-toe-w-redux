@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './Board';
 import calculateWinner from './Winner';
+import { connect } from 'react-redux';
 
 class Game extends React.Component {
   constructor(props) {
@@ -52,5 +53,7 @@ class Game extends React.Component {
     );
   }
 }
+
+Game = connect()(Game);
 
 export default Game;

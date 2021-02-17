@@ -5,6 +5,7 @@ describe("historyReducer", () => {
   const historyData = [{
     squares: Array(9)
   }];
+  const testData = { i: 0, value: 'X' }
 
   const newHistoryData = [{ squares: ['X', null, null, null, null, null, null, null] }]
 
@@ -20,9 +21,14 @@ describe("historyReducer", () => {
   });
 
   test('Should return squares array in history object', () => {
-    expect(historyReducer(historyData, { type: "MAKE_MOVE" })).toEqual([{ squares: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined] },
-    {
-      "squares": ["X", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
-    }]);
+    const { i, value } = testData;
+    action = { type: 'MAKE_MOVE', i, value }
+    expect(historyReducer(historyData, action))
+      .toEqual(
+        [
+          { squares: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined] }, // turn 0 -- blank board
+          { "squares": ["X", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined] } // turn 1 -- first move
+        ]
+      );
   });
 });

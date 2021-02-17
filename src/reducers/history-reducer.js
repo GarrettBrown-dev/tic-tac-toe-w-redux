@@ -1,11 +1,11 @@
-export default (state = [], action) => {
+export default (state = [Array(9).fill(undefined)], action) => {
+  const { i, value } = action
   switch (action.type) {
     case "MAKE_MOVE":
       let newState = [...state];
-      let i = 0;
       let nextMove = newState[newState.length - 1];
       let squares = nextMove.squares.slice();
-      squares[i] = 'X';
+      squares[i] = value;
       let newSquares = squares;
       let newHistory = newState.concat([{ squares: newSquares }]);
       return newHistory;
