@@ -15,7 +15,10 @@ describe("historyReducer", () => {
       "squares": [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
     }]);
   });
-})
-// test('Should return squares array in history object', () => {
-//   expect(historyReducer(historyData, { type: "MAKE_MOVE" })).toEqual( [{ squares: ["X"] }]);
-// });
+
+  test('Should return squares array in history object', () => {
+    expect(historyReducer(historyData, { type: "MAKE_MOVE" })).toEqual([{
+      "squares": ["X", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+    }]);
+  });
+});
