@@ -6,6 +6,9 @@ describe("historyReducer", () => {
     squares: Array(9)
   }];
 
+  const newHistoryData = [{ squares: ['X', null, null, null, null, null, null, null] }]
+
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(historyReducer({}, { type: null })).toEqual({});
   });
@@ -17,7 +20,8 @@ describe("historyReducer", () => {
   });
 
   test('Should return squares array in history object', () => {
-    expect(historyReducer(historyData, { type: "MAKE_MOVE" })).toEqual([{
+    expect(historyReducer(historyData, { type: "MAKE_MOVE" })).toEqual([{ squares: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined] },
+    {
       "squares": ["X", undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
     }]);
   });
