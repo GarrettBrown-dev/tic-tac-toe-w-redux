@@ -7,10 +7,10 @@
 //           xIsNext: false,
 //           history: history
 //         }
-//       });
-//     default:
-//       return state;
-//   };
+      });
+    default:
+return state;
+  };
 
 
 //reducer is doing what setState is doing in our component
@@ -21,17 +21,17 @@
 // }]),
 // xIsNext: false,
 
-export default (state = false, action) => {
-  // const { xIsNext, squares, history } = action;
-  switch (action.type) {
-    case 'SAVE_TURN':
-      return !state;
-    // ...state,
-    // history: history.concat([{
-    //   squares: squares,
-    // }]),
-    // xIsNext: false,
-    default:
-      return state;
-  };
-}
+// export default (state = false, action) => {
+//   // const { xIsNext, squares, history } = action;
+//   switch (action.type) {
+//     case 'SAVE_TURN':
+//       return !state;
+//     // ...state,
+//     // history: history.concat([{
+//     //   squares: squares,
+//     // }]),
+//     // xIsNext: false,
+//     default:
+//       return state;
+//   };
+// }
