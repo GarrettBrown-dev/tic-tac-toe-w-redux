@@ -1,4 +1,4 @@
-export default (state = [Array(9).fill(undefined)], action) => {
+export default (state = [{ squares: Array(9).fill(undefined) }], action) => {
   const { i, value } = action
   switch (action.type) {
     case "MAKE_MOVE":

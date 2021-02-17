@@ -9,7 +9,7 @@ describe("rootReducer", () => {
   test("should return default state if no action type is recognized", () => {
     expect(rootReducer({}, { type: null })).toEqual({
       history: [{
-        squares: Array(9)
+        squares: Array(9).fill(undefined)
       }],
       xIsNext: true
     });
