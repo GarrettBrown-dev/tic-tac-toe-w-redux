@@ -2,6 +2,8 @@ import React from 'react';
 import Board from './Board';
 import calculateWinner from './Winner';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 class Game extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null)
       }],
-      xIsNext: true
+      // xIsNext: true
     };
   }
   handleClick(i) {
@@ -20,14 +22,22 @@ class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+    squares[i] = this.props.xIsNext ? 'X' : 'O';
+    // this.state.xIsNext
     this.setState({
       history: history.concat([{
         squares: squares,
-      }]),
-      xIsNext: !this.state.xIsNext,
+      }])
     });
+    const { dispatch } = this.props;
+    const action = {
+      type: 'TOGGLE_TURN'
+    };
+    dispatch(action);
+    // xIsNext: !this.state.xIsNext,
   }
+
   render() {
     const history = this.state.history;
     const current = history[history.length - 1];
@@ -36,7 +46,8 @@ class Game extends React.Component {
     if (winner) {
       status = 'Winner: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : '0');
+      status = 'Next player: ' + (this.props.xIsNext ? 'X' : '0');
+      // this.state.xIsNext
     }
     return (
       <div className="game">
@@ -54,6 +65,15 @@ class Game extends React.Component {
   }
 }
 
-Game = connect()(Game);
+Game.propTypes = {
+  xIsNext: PropTypes.bool
+};
+
+const mapStateToProps = state => {
+  return {
+    xIsNext: state,
+  }
+}
+Game = connect(mapStateToProps)(Game);
 
 export default Game;
