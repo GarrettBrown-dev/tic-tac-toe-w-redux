@@ -3,6 +3,7 @@ import Board from './Board';
 import calculateWinner from './Winner';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as a from './../actions';
 
 
 class Game extends React.Component {
@@ -31,9 +32,7 @@ class Game extends React.Component {
       }])
     });
     const { dispatch } = this.props;
-    const action = {
-      type: 'TOGGLE_TURN'
-    };
+    const action = a.toggleTurn();
     dispatch(action);
     // xIsNext: !this.state.xIsNext,
   }
